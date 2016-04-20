@@ -15,6 +15,16 @@ public:
     explicit MonDossierFrame(QWidget *parent = 0);
     ~MonDossierFrame();
 
+private slots:
+    void on_btn_acte_naissance_clicked();
+
+    void on_btn_cv_clicked();
+
+
+    void on_btn_photo_clicked();
+
+    void on_btn_diplome_clicked();
+
 private:
     Ui::MonDossierFrame *ui;
 };

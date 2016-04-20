@@ -6,6 +6,9 @@ DossierAccepteFrame::DossierAccepteFrame(QWidget *parent) :
     ui(new Ui::DossierAccepteFrame)
 {
     ui->setupUi(this);
+
+
+
 }
 
 DossierAccepteFrame::~DossierAccepteFrame()

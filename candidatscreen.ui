@@ -1,24 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author/>
- <comment/>
- <exportmacro/>
  <class>CandidatScreen</class>
  <widget class="QMainWindow" name="CandidatScreen">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1500</width>
+    <height>811</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Mon Dossier</string>
   </property>
-  <widget class="QMenuBar" name="menubar"/>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1511</width>
+      <height>761</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout"/>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1500</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMon_Dossier">
+    <property name="title">
+     <string>Mon Dossier</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuResultat">
+    <property name="title">
+     <string>Resultats</string>
+    </property>
+    <addaction name="actionMon_resultat"/>
+    <addaction name="actionListe_des_admis"/>
+    <addaction name="actionVoir_les_rejets"/>
+   </widget>
+   <widget class="QMenu" name="menuCandidature">
+    <property name="title">
+     <string>Candidatures</string>
+    </property>
+    <addaction name="actionCandidats_Authoris_s"/>
+    <addaction name="actionDossiers_Rej_t_s"/>
+   </widget>
+   <widget class="QMenu" name="menuDeconnexion">
+    <property name="title">
+     <string>Deconnexion</string>
+    </property>
+   </widget>
+   <addaction name="menuMon_Dossier"/>
+   <addaction name="menuCandidature"/>
+   <addaction name="menuResultat"/>
+   <addaction name="menuDeconnexion"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionMon_resultat">
+   <property name="text">
+    <string>Mon resultat</string>
+   </property>
+  </action>
+  <action name="actionListe_des_admis">
+   <property name="text">
+    <string>Voir les admis</string>
+   </property>
+  </action>
+  <action name="actionVoir_les_rejets">
+   <property name="text">
+    <string>Voir les rejets</string>
+   </property>
+  </action>
+  <action name="actionCandidats_Authoris_s">
+   <property name="text">
+    <string>Dossiers Acceptés</string>
+   </property>
+  </action>
+  <action name="actionDossiers_Rej_t_s">
+   <property name="text">
+    <string>Dossiers Rejétés</string>
+   </property>
+  </action>
  </widget>
- <pixmapfunction/>
+ <resources/>
  <connections/>
+ <slots>
+  <slot>mon_dossier()</slot>
+ </slots>
 </ui>

@@ -15,8 +15,12 @@ public:
     explicit Register(QWidget *parent = 0);
     ~Register();
 
+private slots:
+    void on_btn_connexion_clicked();
+
 private:
     Ui::Register *ui;
+
 };
 
 #endif // REGISTER_H
