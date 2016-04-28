@@ -14,7 +14,7 @@
    <string>Connexion</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="groupe">
     <property name="geometry">
      <rect>
       <x>380</x>
@@ -39,7 +39,7 @@
      </property>
     </item>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btn_connexion">
     <property name="geometry">
      <rect>
       <x>380</x>
@@ -96,7 +96,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="champ_pseudo"/>
      </item>
     </layout>
    </widget>
@@ -118,7 +118,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="champ_password"/>
      </item>
     </layout>
    </widget>
