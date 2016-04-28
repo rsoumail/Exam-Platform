@@ -1,0 +1,4 @@
+#include <QSqlDatabase>
+
+QSqlDatabase dB();
+
