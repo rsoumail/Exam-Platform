@@ -45,7 +45,12 @@ SOURCES += \
     source_vue/organisateurscreen.cpp \
     source_vue/register.cpp \
     source_entite/utilisateur.cpp \
-    source_utile/httpdownloader.cpp
+    source_utile/httpdownloader.cpp \
+    source_vue/admincreecompteframe.cpp \
+    source_vue/administrateurscreen.cpp \
+    source_vue/voirprofilframe.cpp \
+    source_vue/modifierprofilframe.cpp \
+    source_vue/adminlistecompteframe.cpp
 
 HEADERS  += \
     include_entite/administrateur.h \
@@ -86,7 +91,11 @@ HEADERS  += \
     include_entite/utilisateur.h \
     include_utile/httpdownloader.h \
     include_utile/httpdownloader.h \
-    include_utile/ 
+    include_vue/admincreecompteframe.h \
+    include_vue/administrateurscreen.h \
+    include_vue/voirprofilframe.h \
+    include_vue/modifierprofilframe.h \
+    include_vue/adminlistecompteframe.h
 
 FORMS    += connexion.ui \
     register.ui \
@@ -99,7 +108,12 @@ FORMS    += connexion.ui \
     listeechouesframe.ui \
     organisateurscreen.ui \
     demandescandidatureframe.ui \
-    creecompteframe.ui
+    creecompteframe.ui \
+    administrateurscreen.ui \
+    admincreecompteframe.ui \
+    voirprofilframe.ui \
+    modifierprofilframe.ui \
+    adminlistecompteframe.ui
 
 
 win32 {
