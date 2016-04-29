@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AdministrateurScreen</class>
+ <widget class="QMainWindow" name="AdministrateurScreen">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1500</width>
+    <height>811</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1501</width>
+      <height>761</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout"/>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1500</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuComptes">
+    <property name="title">
+     <string>Comptes</string>
+    </property>
+    <addaction name="action_Cr_er_2"/>
+    <addaction name="actionListe_4"/>
+   </widget>
+   <widget class="QMenu" name="menuConcours">
+    <property name="title">
+     <string>Concours</string>
+    </property>
+    <addaction name="actionCr_er_3"/>
+    <addaction name="actionListe_5"/>
+   </widget>
+   <widget class="QMenu" name="menuProfil">
+    <property name="title">
+     <string>Profil</string>
+    </property>
+    <addaction name="actionVoir_2"/>
+    <addaction name="actionModifier_2"/>
+   </widget>
+   <widget class="QMenu" name="menuD_connexion">
+    <property name="title">
+     <string>Déconnexion</string>
+    </property>
+   </widget>
+   <addaction name="menuComptes"/>
+   <addaction name="menuConcours"/>
+   <addaction name="menuProfil"/>
+   <addaction name="menuD_connexion"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCr_er">
+   <property name="text">
+    <string>Créer</string>
+   </property>
+  </action>
+  <action name="actionListe">
+   <property name="text">
+    <string>Liste</string>
+   </property>
+  </action>
+  <action name="actionCr_er_2">
+   <property name="text">
+    <string>Créer</string>
+   </property>
+  </action>
+  <action name="actionListe_2">
+   <property name="text">
+    <string>Liste</string>
+   </property>
+  </action>
+  <action name="action_Cr_er">
+   <property name="text">
+    <string> Créer</string>
+   </property>
+  </action>
+  <action name="actionListe_3">
+   <property name="text">
+    <string>Liste</string>
+   </property>
+  </action>
+  <action name="actionVoir">
+   <property name="text">
+    <string>Voir</string>
+   </property>
+  </action>
+  <action name="actionModifier">
+   <property name="text">
+    <string>Modifier</string>
+   </property>
+  </action>
+  <action name="action_Cr_er_2">
+   <property name="text">
+    <string> Créer</string>
+   </property>
+  </action>
+  <action name="actionListe_4">
+   <property name="text">
+    <string>Liste</string>
+   </property>
+  </action>
+  <action name="actionCr_er_3">
+   <property name="text">
+    <string>Créer</string>
+   </property>
+  </action>
+  <action name="actionListe_5">
+   <property name="text">
+    <string>Liste</string>
+   </property>
+  </action>
+  <action name="actionVoir_2">
+   <property name="text">
+    <string>Voir</string>
+   </property>
+  </action>
+  <action name="actionModifier_2">
+   <property name="text">
+    <string>Modifier</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
