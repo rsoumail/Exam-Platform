@@ -2,7 +2,7 @@
 #define HTTPDOWNLOADER_H
 
 #include <QObject>
-#include <QHttp>
+#include <  >
 #include <QHttpMultiPart>
 #include <qhttpmultipart.h>
 #include <QFile>
