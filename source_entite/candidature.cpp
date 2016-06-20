@@ -25,16 +25,6 @@ double Candidature::note_culture_generale() const
     return note_culture_generale_;
 }
 
-double Candidature::moyenne() const
-{
-    return moyenne_;
-}
-
-void Candidature::setMoyenne(double moyenne)
-{
-    moyenne_ = moyenne;
-}
-
 Candidat Candidature::candidat() const
 {
     return candidat_;
@@ -50,6 +40,17 @@ int Candidature::statut() const
     return statut_;
 }
 
+int Candidature::id_dossier() const
+{
+    return id_dossier_;
+}
+
+void Candidature::setId_dossier(int id_dossier)
+{
+    id_dossier_ = id_dossier;
+}
+
+
 Candidature::Candidature()
 {
 
@@ -62,6 +63,7 @@ Candidature::Candidature(Candidat candidat, Concours concours)
 
     this->candidat_ = candidat;
     this->concours_ = concours;
+    this->statut_ = 1;
 
 }
 
@@ -69,7 +71,7 @@ Candidature::Candidature(const Candidature& candidature)
 {
 
     this->id_ = candidature.id_;
-    this->note_math_ = candidature.note_physique_;
+    this->note_math_ = candidature.note_math_;
     this->note_physique_ = candidature.note_physique_;
     this->note_francais_ = candidature.note_francais_;
     this->note_culture_generale_ = candidature.note_culture_generale_;
@@ -83,7 +85,7 @@ Candidature::Candidature(const Candidature& candidature)
 Candidature& Candidature::operator=(const Candidature& candidature)
 {
     this->id_ = candidature.id_;
-    this->note_math_ = candidature.note_physique_;
+    this->note_math_ = candidature.note_math_;
     this->note_physique_ = candidature.note_physique_;
     this->note_francais_ = candidature.note_francais_;
     this->note_culture_generale_ = candidature.note_culture_generale_;
@@ -146,7 +148,7 @@ void Candidature::setConcours(const Concours& concours)
 
 void Candidature::setStatut(int statut)
 {
-  this->statut_ =statut;
+  this->statut_ = statut;
 }
 
 

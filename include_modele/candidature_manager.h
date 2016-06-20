@@ -15,6 +15,11 @@ class CandidatureManager
     int update(const Candidature&);
     int count();
     Candidature unique(int);
-    list<Candidature> all();
-
+    Candidature actif(int);
+    QList<Candidature> all();
+    QSqlTableModel* model(QSqlTableModel*);
+    int all_old_to_inactif(int);
+    QList<Candidature> all_accepte(int);
+    QList<Candidature> liste_admis();
+    QList<Candidature> liste_recales();
 };

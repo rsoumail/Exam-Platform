@@ -12,6 +12,7 @@ private:
     Candidat candidat_;
     Concours concours_;
     int statut_;
+    int id_dossier_;
 
 public:
     Candidature();
@@ -36,9 +37,9 @@ public:
     double note_physique() const;
     double note_francais() const;
     double note_culture_generale() const;
-    double moyenne() const;
-    void setMoyenne(double moyenne);
     Candidat candidat() const;
     Concours concours() const;
     int statut() const;
+    int id_dossier() const;
+    void setId_dossier(int id_dossier);
 };
