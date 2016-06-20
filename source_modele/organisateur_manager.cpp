@@ -16,7 +16,7 @@ int OrganisateurManager::save(const Organisateur& o)
 
   if(db.open())
   {
-    QString sQuery = "INSERT INTO organisateurs (nom_organisateur, prenom_organisateur, date_naissance_organisateur, sexe_organisateur, civilite_organisateur, adresse_organisateur, telephone_organisateur, email_organisateur, pseudo_organisateur, password_organisateur, id_groupe) VALUES(:nom, :prenom, :date_naissance, :sexe, :civilite, :adresse, :telephone, :email, :pseudo, :password, :groupe)";
+    QString sQuery = "INSERT INTO organisateurs (nom_organisateur, prenom_organisateur, date_naissance_organisateur, sexe_organisateur, civilite_organisateur, nationalite_organisateur, adresse_organisateur, telephone_organisateur, email_organisateur, pseudo_organisateur, password_organisateur, id_groupe) VALUES(:nom, :prenom, :date_naissance, :sexe, :civilite, :nationalite_organisateur, :adresse, :telephone, :email, :pseudo, :password, :groupe)";
     QSqlQuery query ;
     query.prepare(sQuery);
     query.bindValue(":nom", o.nom());
@@ -28,6 +28,7 @@ int OrganisateurManager::save(const Organisateur& o)
     query.bindValue(":telephone", o.telephone());
     query.bindValue(":email", o.email());
     query.bindValue(":pseudo", o.pseudo());
+    query.bindValue(":nationalite_organisateur", o.nationalite());
     query.bindValue(":password", o.password());
     query.bindValue(":groupe", o.groupe().id());
     if(query.exec())
@@ -53,7 +54,7 @@ int OrganisateurManager::update(const Organisateur& o)
 
   if(db.open())
   {
-    QString sQuery = "UPDATE  SET nom_organisateur=:nom, prenom_organisateur=:prenom, date_naissance_organisateur=:date_naissance, sexe_organisateur=:sexe, civilite_organisateur=:civilite, adresse_organisateur=:adresse, telephone_organisateur=:telephone, email_organisateur=:email, pseudo_organisateur=:pseudo, password_organisateur=:password, id_groupe=:groupe WHERE id_organisateur=:id";
+    QString sQuery = "UPDATE organisateurs SET nom_organisateur=:nom, prenom_organisateur=:prenom, date_naissance_organisateur=:date_naissance, sexe_organisateur=:sexe, civilite_organisateur=:civilite, nationalite_organisateur=:nationalite, adresse_organisateur=:adresse, telephone_organisateur=:telephone, email_organisateur=:email, pseudo_organisateur=:pseudo, password_organisateur=:password, id_groupe=:groupe WHERE id_organisateur=:id";
     QSqlQuery query ;
     query.prepare(sQuery);
     query.bindValue(":nom", o.nom());
@@ -67,6 +68,7 @@ int OrganisateurManager::update(const Organisateur& o)
     query.bindValue(":pseudo", o.pseudo());
     query.bindValue(":password", o.password());
     query.bindValue(":groupe", o.groupe().id());
+    query.bindValue(":nationalite", o.nationalite());
     query.bindValue(":id", o.id());
     if(query.exec())
     {
@@ -133,10 +135,11 @@ int OrganisateurManager::countByPseudo(QString pseudo)
 
 Organisateur OrganisateurManager::uniqueByPseudoAndPassword(QString pseudo, QString password)
 {
+    int id_groupe;
     Organisateur tmp;
     if(db.open())
     {
-        QString sQuery = "SELECT * FROM candidats WHERE pseudo_candidat=:pseudo AND password_candidat=:password";
+        QString sQuery = "SELECT * FROM organisateurs WHERE pseudo_organisateur=:pseudo AND password_organisateur=:password";
         QSqlQuery query ;
         query.prepare(sQuery);
         query.bindValue(":pseudo", pseudo);
@@ -157,13 +160,14 @@ Organisateur OrganisateurManager::uniqueByPseudoAndPassword(QString pseudo, QStr
                 tmp.setEmail(query.value(9).toString());
                 tmp.setPseudo(query.value(10).toString());
                 tmp.setPassword(query.value(11).toString());
-                int id_groupe = query.value(12).toInt();
-                GroupeManager groupeManager;
-                Groupe groupe = groupeManager.unique(id_groupe);
-                tmp.setGroupe(groupe);
+                id_groupe = query.value(12).toInt();
+
             }
         }
         db.close();
+        GroupeManager groupeManager;
+        Groupe groupe = groupeManager.unique(id_groupe);
+        tmp.setGroupe(groupe);
         return tmp;
     }
     else
@@ -175,6 +179,7 @@ Organisateur OrganisateurManager::uniqueByPseudoAndPassword(QString pseudo, QStr
 Organisateur OrganisateurManager::unique(int id)
 {
 
+  int id_groupe;
   Organisateur tmp;
   if(db.open())
   {
@@ -196,18 +201,13 @@ Organisateur OrganisateurManager::unique(int id)
         tmp.setEmail(query.value(9).toString());
         tmp.setPseudo(query.value(10).toString());
         tmp.setPassword(query.value(11).toString());
-        int id_groupe = query.value(12).toInt();
+        id_groupe = query.value(12).toInt();
+    }
+      db.close();
       GroupeManager groupeManager;
       Groupe groupe = groupeManager.unique(id_groupe);
       tmp.setGroupe(groupe);
-      db.close();
       return tmp;
-    }
-    else
-    {
-      db.close();
-      return tmp;
-    }
   }
   else
   {
@@ -217,9 +217,10 @@ Organisateur OrganisateurManager::unique(int id)
 
 }
 
-list<Organisateur> OrganisateurManager::all()
+QList<Organisateur> OrganisateurManager::all()
 {
-  list<Organisateur> organisateurs;
+  QList<int> ids;
+  QList<Organisateur> organisateurs;
   if(db.open())
   {
     QString sQuery = "SELECT * FROM  organisateurs";
@@ -227,26 +228,30 @@ list<Organisateur> OrganisateurManager::all()
     if(query.exec(sQuery))
     {
         while(query.next()){
-          int id = query.value(0).toInt();
-          QString nom = query.value(1).toString();
-          QString prenom = query.value(2).toString();
-          QString sexe = query.value(3).toString();
-          QString civilite = query.value(4).toString();
-          QString nationalite = query.value(5).toString();
-          QString adresse = query.value(6).toString();
-          QString date_naissance = query.value(7).toString();
-          QString telephone = query.value(8).toString();
-          QString email = query.value(9).toString();
-          QString pseudo = query.value(10).toString();
-          QString password = query.value(11).toString();
-          int id_groupe = query.value(12).toInt();
-
-          GroupeManager groupeManager;
-          Groupe groupe = groupeManager.unique(id_groupe);
-          Organisateur organisateur(id, nom, prenom, sexe, civilite, nationalite, adresse, date_naissance, telephone, email, pseudo, password, groupe);
-          organisateurs.insert(organisateurs.end(),organisateur);
+            Organisateur tmp;
+            tmp.setId(query.value(0).toInt());
+            tmp.setNom(query.value(1).toString());
+            tmp.setPrenom(query.value(2).toString());
+            tmp.setDate_naissance(query.value(3).toString());
+            tmp.setSexe(query.value(4).toString());
+            tmp.setCivilite(query.value(5).toString());
+            tmp.setNationalite(query.value(6).toString());
+            tmp.setAdresse(query.value(7).toString());
+            tmp.setTelephone(query.value(8).toString());
+            tmp.setEmail(query.value(9).toString());
+            tmp.setPseudo(query.value(10).toString());
+            tmp.setPassword(query.value(11).toString());
+            ids.insert(ids.end(),query.value(12).toInt());
+            organisateurs.insert(organisateurs.end(),tmp);
         }
-        db.close();
+    }
+    db.close();
+    for(int i = 0;i<ids.size();i++)
+    {
+        Organisateur o = organisateurs.at(i);
+        GroupeManager groupeManager;
+        o.setGroupe(groupeManager.unique(ids.at(i)));
+        organisateurs.replace(i,o);
     }
     return organisateurs;
   }
@@ -254,6 +259,15 @@ list<Organisateur> OrganisateurManager::all()
   {
     return organisateurs;
   }
+}
+
+QSqlTableModel* OrganisateurManager::model(QSqlTableModel*model_)
+{
+    db.open();
+    model_->setTable("organisateurs");
+    model_->select();
+    db.close();
+    return model_;
 }
 
 

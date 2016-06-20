@@ -15,6 +15,10 @@ class DossierManager
     int update(const Dossier&);
     int count();
     Dossier unique(int id);
-    list<Dossier> all();
+    QList<Dossier> all();
+    QList<Dossier> all_non_valide();
+    QList<Dossier> all_valide();
+    QList<Dossier> all_non_traiter();
+    QSqlTableModel* model(QSqlTableModel*);
 
 };

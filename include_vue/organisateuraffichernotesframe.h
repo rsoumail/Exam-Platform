@@ -2,6 +2,8 @@
 #define ORGANISATEURAFFICHERNOTESFRAME_H
 
 #include <QFrame>
+#include "organisateurinscriptionframe.h"
+
 
 namespace Ui {
 class OrganisateurAfficherNotesFrame;
@@ -17,6 +19,7 @@ public:
 
 private:
     Ui::OrganisateurAfficherNotesFrame *ui;
+
 };
 
 #endif // ORGANISATEURAFFICHERNOTESFRAME_H

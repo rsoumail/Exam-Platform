@@ -157,3 +157,12 @@ list<Groupe> GroupeManager::all()
   return groupes;
 }
 
+QSqlTableModel* GroupeManager::model(QSqlTableModel*model_)
+{
+    db.open();
+    model_->setTable("groupes");
+    model_->select();
+    db.close();
+    return model_;
+}
+

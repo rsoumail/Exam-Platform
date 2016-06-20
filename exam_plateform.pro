@@ -7,6 +7,7 @@
 QT       += core gui
 QT       += sql
 QT       += network
+QT       += printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -50,7 +51,15 @@ SOURCES += \
     source_vue/administrateurscreen.cpp \
     source_vue/voirprofilframe.cpp \
     source_vue/modifierprofilframe.cpp \
-    source_vue/adminlistecompteframe.cpp
+    source_vue/adminlistecompteframe.cpp \
+    source_vue/adminlisteconcoursframe.cpp \
+    source_vue/admincreerconcoursframe.cpp \
+    source_vue/organisateurinscriptionframe.cpp \
+    source_vue/organisateuraffichernotesframe.cpp \
+    source_vue/organisteurvalidationframe.cpp \
+    source_utile/downloadmanager.cpp \
+    source_utile/uploadmanager.cpp \
+    source_utile/filedownloader.cpp
 
 HEADERS  += \
     include_entite/administrateur.h \
@@ -61,13 +70,6 @@ HEADERS  += \
     include_entite/groupe.h \
     include_entite/organisateur.h \
     include_entite/personne.h \
-    include_libxl/enum.h \
-    include_libxl/IBookT.h \
-    include_libxl/IFontT.h \
-    include_libxl/IFormatT.h \
-    include_libxl/ISheetT.h \
-    include_libxl/libxl.h \
-    include_libxl/setup.h \
     include_modele/administrateur_manager.h \
     include_modele/candidat_manager.h \
     include_modele/candidature_manager.h \
@@ -90,12 +92,19 @@ HEADERS  += \
     include_vue/register.h \
     include_entite/utilisateur.h \
     include_utile/httpdownloader.h \
-    include_utile/httpdownloader.h \
     include_vue/admincreecompteframe.h \
     include_vue/administrateurscreen.h \
     include_vue/voirprofilframe.h \
     include_vue/modifierprofilframe.h \
-    include_vue/adminlistecompteframe.h
+    include_vue/adminlistecompteframe.h \
+    include_vue/adminlisteconcoursframe.h \
+    include_vue/admincreerconcoursframe.h \
+    include_vue/organisateurinscriptionframe.h \
+    include_vue/organisateuraffichernotesframe.h \
+    include_vue/organisteurvalidationframe.h \
+    include_utile/downloadmanager.h \
+    include_utile/uploadmanager.h \
+    include_utile/filedownloader.h
 
 FORMS    += connexion.ui \
     register.ui \
@@ -113,35 +122,16 @@ FORMS    += connexion.ui \
     admincreecompteframe.ui \
     voirprofilframe.ui \
     modifierprofilframe.ui \
-    adminlistecompteframe.ui
+    adminlistecompteframe.ui \
+    adminlisteconcoursframe.ui \
+    admincreerconcoursframe.ui \
+    organisateurinscriptionframe.ui \
+    organisateuraffichernotesframe.ui \
+    organisteurvalidationframe.ui
 
-
-win32 {
-
-    INCLUDEPATH = ../../../include_cpp
-    LIBS += ../../../lib/libxl.lib
-
-    QMAKE_POST_LINK +=$$quote(cmd /c copy /y ..\..\..\bin\libxl.dll .)
-
-} else:macx {
-
-    INCLUDEPATH = ../../include_cpp
-    LIBS += -framework LibXL
-
-    QMAKE_LFLAGS += -F../../
-    QMAKE_POST_LINK +=$$quote(mkdir $${TARGET}.app/Contents/Frameworks;cp -R ../../LibXL.framework $${TARGET}.app/Contents/Frameworks/)
-
-} else {
-
-    INCLUDEPATH += include_libxl/ \
-                   include_entite/ \
+    INCLUDEPATH += include_entite/ \
                    include_modele/ \
                    include_utile/ \
                    include_vue/
 
 
-    LIBS += lib64/libxl.so
-
-    QMAKE_LFLAGS_DEBUG = "-Wl,-rpath,lib64/"
-    QMAKE_LFLAGS_RELEASE = "-Wl,-rpath,lib64/"
-}

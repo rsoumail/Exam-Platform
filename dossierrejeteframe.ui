@@ -19,36 +19,27 @@
   <property name="frameShadow">
    <enum>QFrame::Raised</enum>
   </property>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QTableView" name="table_dossiers_rejetes">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>50</y>
-     <width>341</width>
-     <height>29</height>
+     <x>40</x>
+     <y>110</y>
+     <width>1291</width>
+     <height>551</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>Année :</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QComboBox" name="comboBox_2"/>
-    </item>
-   </layout>
   </widget>
-  <widget class="QTableView" name="table_dossier_rejete">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>110</y>
-     <width>0</width>
-     <height>0</height>
+     <x>50</x>
+     <y>30</y>
+     <width>211</width>
+     <height>51</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Canidatures Rejetées :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>

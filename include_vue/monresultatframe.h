@@ -2,7 +2,7 @@
 #define MONRESULTATFRAME_H
 
 #include <QFrame>
-#include "candidature_manager.h"
+#include "mondossierframe.h"
 namespace Ui {
 class MonResultatFrame;
 }
@@ -15,8 +15,14 @@ public:
     explicit MonResultatFrame(QWidget *parent = 0);
     ~MonResultatFrame();
 
+    Candidat getUser() const;
+    void setUser(const Candidat &value);
+
+    void update();
+
 private:
     Ui::MonResultatFrame *ui;
+    Candidat user;
 };
 
 #endif // MONRESULTATFRAME_H

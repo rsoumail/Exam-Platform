@@ -16,7 +16,7 @@ int AdministrateurManager::save(const Administrateur& a)
 
   if(db.open())
   {
-    QString sQuery = "INSERT INTO administrateurs (nom_administrateur, prenom_administrateur, date_naissance_administrateur, sexe_administrateur, civilite_administrateur, adresse_administrateur, telephone_administrateur, email_administrateur, pseudo_administrateur, password_administrateur, id_groupe) VALUES(:nom, :prenom, :date_naissance, :sexe, :civilite, :adresse, :telephone, :email, :pseudo, :password, :groupe)";
+    QString sQuery = "INSERT INTO administrateurs (nom_administrateur, prenom_administrateur, date_naissance_administrateur, sexe_administrateur, civilite_administrateur, nationalite_administrateur, adresse_administrateur, telephone_administrateur, email_administrateur, pseudo_administrateur, password_administrateur, id_groupe) VALUES(:nom, :prenom, :date_naissance, :sexe, :civilite, :nationalite_administrateur, :adresse, :telephone, :email, :pseudo, :password, :groupe)";
     QSqlQuery query ;
     query.prepare(sQuery);
     query.bindValue(":nom", a.nom());
@@ -30,6 +30,7 @@ int AdministrateurManager::save(const Administrateur& a)
     query.bindValue(":pseudo", a.pseudo());
     query.bindValue(":password", a.password());
     query.bindValue(":groupe", a.groupe().id());
+    query.bindValue(":nationalite_administrateur", a.nationalite());
     if(query.exec())
     {
       db.close();
@@ -53,7 +54,7 @@ int AdministrateurManager::update(const Administrateur& a)
 
   if(db.open())
   {
-    QString sQuery = "UPDATE administrateurs SET nom_administrateur=:nom, prenom_administrateur=:prenom, date_naissance_administrateur=:date_naissance, sexe_administrateur=:sexe, civilite_administrateur=:civilite, adresse_administrateur=:adresse, telephone_administrateur=:telephone, email_administrateur=:email, pseudo_administrateur=:pseudo, password_administrateur=:password, id_groupe=:groupe WHERE id_administrateur=:id";
+    QString sQuery = "UPDATE administrateurs SET nom_administrateur=:nom, prenom_administrateur=:prenom, date_naissance_administrateur=:date_naissance, sexe_administrateur=:sexe, civilite_administrateur=:civilite, adresse_administrateur=:adresse, telephone_administrateur=:telephone, email_administrateur=:email, pseudo_administrateur=:pseudo, password_administrateur=:password, id_groupe=:groupe, nationalite_administrateur=:nationalite_administrateur WHERE id_administrateur=:id";
     QSqlQuery query ;
     query.prepare(sQuery);
     query.bindValue(":nom", a.nom());
@@ -67,6 +68,7 @@ int AdministrateurManager::update(const Administrateur& a)
     query.bindValue(":pseudo", a.pseudo());
     query.bindValue(":password", a.password());
     query.bindValue(":groupe", a.groupe().id());
+    query.bindValue(":nationalite_administrateur", a.nationalite());
     query.bindValue(":id", a.id());
     if(query.exec())
     {
@@ -133,10 +135,11 @@ int AdministrateurManager::countByPseudo(QString pseudo)
 
 Administrateur AdministrateurManager::uniqueByPseudoAndPassword(QString pseudo, QString password)
 {
+    int id_groupe;
     Administrateur tmp;
     if(db.open())
     {
-        QString sQuery = "SELECT * FROM candidats WHERE pseudo_candidat=:pseudo AND password_candidat=:password";
+        QString sQuery = "SELECT * FROM administrateurs WHERE pseudo_administrateur=:pseudo AND password_administrateur=:password";
         QSqlQuery query ;
         query.prepare(sQuery);
         query.bindValue(":pseudo", pseudo);
@@ -157,13 +160,13 @@ Administrateur AdministrateurManager::uniqueByPseudoAndPassword(QString pseudo, 
                 tmp.setEmail(query.value(9).toString());
                 tmp.setPseudo(query.value(10).toString());
                 tmp.setPassword(query.value(11).toString());
-                int id_groupe = query.value(12).toInt();
-                GroupeManager groupeManager;
-                Groupe groupe = groupeManager.unique(id_groupe);
-                tmp.setGroupe(groupe);
+                id_groupe = query.value(12).toInt();
             }
         }
         db.close();
+        GroupeManager groupeManager;
+        Groupe groupe = groupeManager.unique(id_groupe);
+        tmp.setGroupe(groupe);
         return tmp;
     }
     else
@@ -174,7 +177,7 @@ Administrateur AdministrateurManager::uniqueByPseudoAndPassword(QString pseudo, 
 
 Administrateur AdministrateurManager::unique(int id)
 {
-
+  int id_groupe;
   Administrateur tmp;
   if(db.open())
   {
@@ -196,18 +199,13 @@ Administrateur AdministrateurManager::unique(int id)
         tmp.setEmail(query.value(9).toString());
         tmp.setPseudo(query.value(10).toString());
         tmp.setPassword(query.value(11).toString());
-        int id_groupe = query.value(12).toInt();
-      GroupeManager groupeManager;
-      Groupe groupe = groupeManager.unique(id_groupe);
-      tmp.setGroupe(groupe);
-      db.close();
-      return tmp;
+        id_groupe = query.value(12).toInt();
     }
-    else
-    {
-      db.close();
-      return tmp;
-    }
+    db.close();
+    GroupeManager groupeManager;
+    Groupe groupe = groupeManager.unique(id_groupe);
+    tmp.setGroupe(groupe);
+    return tmp;
   }
   else
   {
@@ -218,9 +216,10 @@ Administrateur AdministrateurManager::unique(int id)
 }
 
 
-list<Administrateur> AdministrateurManager::all()
+QList<Administrateur> AdministrateurManager::all()
 {
-  list<Administrateur> administrateurs;
+  QList<int> ids;
+  QList<Administrateur> administrateurs;
   if(db.open())
   {
     QString sQuery = "SELECT * FROM  administrateurs";
@@ -228,26 +227,30 @@ list<Administrateur> AdministrateurManager::all()
     if(query.exec(sQuery))
     {
         while(query.next()){
-          int id = query.value(0).toInt();
-          QString nom = query.value(1).toString();
-          QString prenom = query.value(2).toString();
-          QString sexe = query.value(3).toString();
-          QString civilite = query.value(4).toString();
-          QString nationalite = query.value(5).toString();
-          QString adresse = query.value(6).toString();
-          QString date_naissance = query.value(7).toString();
-          QString telephone = query.value(8).toString();
-          QString email = query.value(9).toString();
-          QString pseudo = query.value(10).toString();
-          QString password = query.value(11).toString();
-          int id_groupe = query.value(12).toInt();
-
-          GroupeManager groupeManager;
-          Groupe groupe = groupeManager.unique(id_groupe);
-          Administrateur administrateur(id, nom, prenom, sexe, civilite, nationalite, adresse, date_naissance, telephone, email, pseudo, password, groupe);
-          administrateurs.insert(administrateurs.end(),administrateur);
+          Administrateur tmp;
+          tmp.setId(query.value(0).toInt());
+          tmp.setNom(query.value(1).toString());
+          tmp.setPrenom(query.value(2).toString());
+          tmp.setDate_naissance(query.value(3).toString());
+          tmp.setSexe(query.value(4).toString());
+          tmp.setCivilite(query.value(5).toString());
+          tmp.setNationalite(query.value(6).toString());
+          tmp.setAdresse(query.value(7).toString());
+          tmp.setTelephone(query.value(8).toString());
+          tmp.setEmail(query.value(9).toString());
+          tmp.setPseudo(query.value(10).toString());
+          tmp.setPassword(query.value(11).toString());
+          ids.insert(ids.end(),query.value(12).toInt());
+          administrateurs.insert(administrateurs.end(),tmp);
         }
-        db.close();
+    }
+    db.close();
+    for(int i = 0;i<ids.size();i++)
+    {
+        Administrateur a = administrateurs.at(i);
+        GroupeManager groupeManager;
+        a.setGroupe(groupeManager.unique(ids.at(i)));
+        administrateurs.replace(i,a);
     }
     return administrateurs;
   }
@@ -255,6 +258,15 @@ list<Administrateur> AdministrateurManager::all()
   {
     return administrateurs;
   }
+}
+
+QSqlTableModel* AdministrateurManager::model(QSqlTableModel*model_)
+{
+    db.open();
+    model_->setTable("administrateurs");
+    model_->select();
+    db.close();
+    return model_;
 }
 
 

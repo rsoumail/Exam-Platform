@@ -19,7 +19,63 @@
   <property name="frameShadow">
    <enum>QFrame::Raised</enum>
   </property>
+  <widget class="QTableView" name="table_echoues">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>80</y>
+     <width>1330</width>
+     <height>551</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>30</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Liste des récalés :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_imprimer">
+   <property name="geometry">
+    <rect>
+     <x>1260</x>
+     <y>640</y>
+     <width>99</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Imprimer</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btn_imprimer</sender>
+   <signal>clicked()</signal>
+   <receiver>ListeEchouesFrame</receiver>
+   <slot>on_click_impression()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1295</x>
+     <y>653</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1465</x>
+     <y>471</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>on_click_impression()</slot>
+ </slots>
 </ui>

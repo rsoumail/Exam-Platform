@@ -20,8 +20,7 @@ class CandidatManager
     Candidat uniqueByPseudoAndPassword(QString, QString);
     Candidat unique(int);
     void setCandidat(const Candidat&);
-    list<Candidat> all();
-    //list<Candidat> admis();
-    //list<Candidat> echoues();
+    QList<Candidat> all();
+    QSqlTableModel* model(QSqlTableModel*);
 
 };

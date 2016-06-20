@@ -20,16 +20,6 @@ class QSslError;
 class DownloadManager: public QObject
 {
     Q_OBJECT
-    static const int CV_FILE = 1;
-    static const int ACTE_NAISSANCE_FILE = 2;
-    static const int PHOTO_FILE = 3;
-    static const int DIPLOME_FILE = 4;
-    static const QString CV_CHEMIN = "Fichiers/CV/";
-    static const QString ACTE_NAISSANCE_CHEMIN = "Fichiers/Actes_naissance/";
-    static const QString PHOTO_CHEMIN = "Fichiers/Photos/";
-    static const QString DIPLOME_CHEMIN = "Fichiers/Diplomes/";
-    static const QString URL_SERVEUR = "http://localhost:8000/";
-    static const QString REPERTOIRE_FICHIER_CLIENT = "Client/";
     QNetworkAccessManager manager;
     QList<QNetworkReply *> currentDownloads;
 
@@ -38,10 +28,21 @@ public:
     void doDownload(const QUrl &url);
     QString saveFileName(const QUrl &url);
     bool saveToDisk(const QString &filename, QIODevice *data);
-    int FILE_TYPE;
+    QString FILE_TYPE;
+    QString URL_SERVEUR;
+    #define CV_FILE ("1")
+    #define ACTE_NAISSANCE_FILE ("2")
+    #define PHOTO_FILE ("3")
+    #define DIPLOME_FILE ("4")
+    #define CV_CHEMIN ("Fichiers/CV/")
+    #define ACTE_NAISSANCE_CHEMIN ("Fichiers/Actes_naissance/")
+    #define PHOTO_CHEMIN ("Fichiers/Photos/")
+    #define DIPLOME_CHEMIN ("Fichiers/Diplomes/")
+    #define REPERTOIRE_FICHIER_CLIENT ("Client/")
+
 
 public slots:
-    void execute(QString, int);
+    void execute(QString, QString);
     void downloadFinished(QNetworkReply *reply);
     void sslErrors(const QList<QSslError> &errors);
 };

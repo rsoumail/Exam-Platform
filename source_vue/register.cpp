@@ -86,7 +86,7 @@ void Register::on_btn_inscription_clicked()
             else if(pseudo_utilise == 0)
             {
                 GroupeManager groupeManager;
-                Groupe groupe = groupeManager.unique(3);
+                Groupe groupe = groupeManager.unique(2);
                 CandidatManager candidatManager;
                 Candidat candidat(0, nom, prenom, sexe, civilite, nationalite, adresse,  date_naissance, telephone, email, pseudo, password, groupe);
                 int etat_req = candidatManager.save(candidat);

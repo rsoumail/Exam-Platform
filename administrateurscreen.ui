@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Création de compte</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="horizontalLayoutWidget">
@@ -39,22 +39,22 @@
     <property name="title">
      <string>Comptes</string>
     </property>
-    <addaction name="action_Cr_er_2"/>
-    <addaction name="actionListe_4"/>
+    <addaction name="creer_compte"/>
+    <addaction name="lister_compte"/>
    </widget>
    <widget class="QMenu" name="menuConcours">
     <property name="title">
      <string>Concours</string>
     </property>
-    <addaction name="actionCr_er_3"/>
-    <addaction name="actionListe_5"/>
+    <addaction name="creer_concours"/>
+    <addaction name="lister_concours"/>
    </widget>
    <widget class="QMenu" name="menuProfil">
     <property name="title">
      <string>Profil</string>
     </property>
-    <addaction name="actionVoir_2"/>
-    <addaction name="actionModifier_2"/>
+    <addaction name="voir_profil"/>
+    <addaction name="modifier_profil"/>
    </widget>
    <widget class="QMenu" name="menuD_connexion">
     <property name="title">
@@ -67,72 +67,32 @@
    <addaction name="menuD_connexion"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionCr_er">
-   <property name="text">
-    <string>Créer</string>
-   </property>
-  </action>
-  <action name="actionListe">
-   <property name="text">
-    <string>Liste</string>
-   </property>
-  </action>
-  <action name="actionCr_er_2">
-   <property name="text">
-    <string>Créer</string>
-   </property>
-  </action>
-  <action name="actionListe_2">
-   <property name="text">
-    <string>Liste</string>
-   </property>
-  </action>
-  <action name="action_Cr_er">
+  <action name="creer_compte">
    <property name="text">
     <string> Créer</string>
    </property>
   </action>
-  <action name="actionListe_3">
+  <action name="lister_compte">
    <property name="text">
     <string>Liste</string>
    </property>
   </action>
-  <action name="actionVoir">
-   <property name="text">
-    <string>Voir</string>
-   </property>
-  </action>
-  <action name="actionModifier">
-   <property name="text">
-    <string>Modifier</string>
-   </property>
-  </action>
-  <action name="action_Cr_er_2">
-   <property name="text">
-    <string> Créer</string>
-   </property>
-  </action>
-  <action name="actionListe_4">
-   <property name="text">
-    <string>Liste</string>
-   </property>
-  </action>
-  <action name="actionCr_er_3">
+  <action name="creer_concours">
    <property name="text">
     <string>Créer</string>
    </property>
   </action>
-  <action name="actionListe_5">
+  <action name="lister_concours">
    <property name="text">
     <string>Liste</string>
    </property>
   </action>
-  <action name="actionVoir_2">
+  <action name="voir_profil">
    <property name="text">
     <string>Voir</string>
    </property>
   </action>
-  <action name="actionModifier_2">
+  <action name="modifier_profil">
    <property name="text">
     <string>Modifier</string>
    </property>

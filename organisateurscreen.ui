@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Inscriptions à validé</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="horizontalLayoutWidget">
@@ -103,15 +103,17 @@
    </property>
    <widget class="QMenu" name="menuDemandes">
     <property name="title">
-     <string>Demandes</string>
+     <string>Inscriptions</string>
     </property>
+    <addaction name="actionAccptes"/>
+    <addaction name="actionRejetes"/>
+    <addaction name="actionNon_Valides"/>
    </widget>
    <widget class="QMenu" name="menuMoyennes">
     <property name="title">
      <string>Notes</string>
     </property>
     <addaction name="actionAfficher"/>
-    <addaction name="actionCalcul_Moyennes"/>
     <addaction name="actionFiche_notes"/>
     <addaction name="actionImporter_Notes"/>
    </widget>
@@ -120,8 +122,24 @@
      <string>Deconnexion</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuProfil">
+    <property name="title">
+     <string>Profil</string>
+    </property>
+    <addaction name="actionVoir"/>
+    <addaction name="actionModifier"/>
+   </widget>
+   <widget class="QMenu" name="menuR_sultats">
+    <property name="title">
+     <string>Résultats</string>
+    </property>
+    <addaction name="actionVoir_les_admis"/>
+    <addaction name="actionVoir_les_recal_s"/>
+   </widget>
    <addaction name="menuDemandes"/>
    <addaction name="menuMoyennes"/>
+   <addaction name="menuProfil"/>
+   <addaction name="menuR_sultats"/>
    <addaction name="menuDeconnexion"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -130,19 +148,55 @@
     <string>Afficher</string>
    </property>
   </action>
-  <action name="actionCalcul_Moyennes">
-   <property name="text">
-    <string>Calcul Moyennes</string>
-   </property>
-  </action>
   <action name="actionFiche_notes">
    <property name="text">
-    <string>Exporter Fiche Notes</string>
+    <string>Générer un fichier de notes</string>
+   </property>
+   <property name="toolTip">
+    <string>Générer un fichier de notes</string>
    </property>
   </action>
   <action name="actionImporter_Notes">
    <property name="text">
-    <string>Importer Notes</string>
+    <string>Importer le fichier de notes</string>
+   </property>
+   <property name="toolTip">
+    <string>Importer le fichier de notes</string>
+   </property>
+  </action>
+  <action name="actionAccptes">
+   <property name="text">
+    <string>Acceptés</string>
+   </property>
+  </action>
+  <action name="actionRejetes">
+   <property name="text">
+    <string>Rejetés</string>
+   </property>
+  </action>
+  <action name="actionNon_Valides">
+   <property name="text">
+    <string>Non Validés</string>
+   </property>
+  </action>
+  <action name="actionVoir">
+   <property name="text">
+    <string>Voir</string>
+   </property>
+  </action>
+  <action name="actionModifier">
+   <property name="text">
+    <string>Modifier</string>
+   </property>
+  </action>
+  <action name="actionVoir_les_admis">
+   <property name="text">
+    <string>voir les admis</string>
+   </property>
+  </action>
+  <action name="actionVoir_les_recal_s">
+   <property name="text">
+    <string>voir les recalés</string>
    </property>
   </action>
  </widget>

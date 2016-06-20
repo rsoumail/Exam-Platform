@@ -29,11 +29,6 @@ void Connexion::on_register_link_clicked()
     r->show();
 }
 
-void Connexion::on_pushButton_clicked()
-{
-    this-> close();
-    cs->show();
-}
 
 void Connexion::on_btn_connexion_clicked()
 {
@@ -46,8 +41,9 @@ void Connexion::on_btn_connexion_clicked()
         Candidat user = candidatManager.uniqueByPseudoAndPassword(pseudo, password);
         if(user.nom() != "")
         {
-
             cs->setUser(user);
+            cs->getMdf()->setUser(user);
+            cs->getMdf()->update();
             this->close();
             cs->show();
         }
@@ -63,6 +59,10 @@ void Connexion::on_btn_connexion_clicked()
         if(user.nom() != "")
         {
 
+            orgScreen->setUser(user);
+            //orgScreen->getOrgInsFrame()->setU
+            this->close();
+            orgScreen->show();
         }
         else
         {
@@ -75,7 +75,10 @@ void Connexion::on_btn_connexion_clicked()
         Administrateur user = administrateurManager.uniqueByPseudoAndPassword(pseudo, password);
         if(user.nom() != "")
         {
-
+            adminScreen->setUser(user);
+            adminScreen->getCreeCompteFrame()->setUser(user);
+            this->close();
+            adminScreen->show();
         }
         else
         {

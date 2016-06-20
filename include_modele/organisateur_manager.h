@@ -18,7 +18,8 @@ class OrganisateurManager
     int countByPseudo(QString);
     Organisateur uniqueByPseudoAndPassword(QString, QString);
     Organisateur unique(int);
-    list<Organisateur> all();
+    QList<Organisateur> all();
+    QSqlTableModel* model(QSqlTableModel*);
 
 
 };

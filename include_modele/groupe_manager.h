@@ -16,5 +16,6 @@ class GroupeManager
     int count();
     Groupe unique(int);
     list<Groupe> all();
+    QSqlTableModel* model(QSqlTableModel*);
 
 };

@@ -25,17 +25,17 @@
     </property>
     <item>
      <property name="text">
+      <string>Administrateur</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
       <string>Candidat</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Examinateur</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Administrateur</string>
+      <string>Organisateur</string>
      </property>
     </item>
    </widget>
@@ -118,7 +118,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="champ_password"/>
+      <widget class="QLineEdit" name="champ_password">
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>

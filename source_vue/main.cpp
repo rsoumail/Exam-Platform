@@ -2,6 +2,7 @@
 #include "register.h"
 #include "candidatscreen.h"
 #include "mondossierframe.h"
+#include "administrateurscreen.h"
 #include <QApplication>
 #include <QStyle>
 #include <QDesktopWidget>
@@ -14,6 +15,7 @@ int main(int argc, char *argv[])
     Register r;
     CandidatScreen sc;
     MonDossierFrame mdf;
+    AdministrateurScreen adminScreen;
 
     w.setGeometry(
         QStyle::alignedRect(

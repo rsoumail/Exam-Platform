@@ -1,6 +1,7 @@
 #include <QtSql>
 #include <list>
 #include "dossier_manager.h"
+#include <QtCore>
 
 using namespace std;
 
@@ -17,6 +18,9 @@ class ConcoursManager
     int update(const Concours&);
     int count();
     Concours unique(int);
-    list<Concours> all();
+    Concours actif();
+    QList<Concours> all();
+    QSqlTableModel* model(QSqlTableModel*);
+    int all_old_to_inactif();
 
 };

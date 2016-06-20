@@ -2,7 +2,7 @@
 #define MONDOSSIERFRAME_H
 
 #include <QFrame>
-#include "dossieraccepteframe.h"
+#include "modifierprofilframe.h"
 namespace Ui {
 class MonDossierFrame;
 }
@@ -18,6 +18,10 @@ public:
     Candidat getUser() const;
     void setUser(const Candidat &value);
 
+    int getUpdate_or_save() const;
+    void setUpdate_or_save(int value);
+    void update();
+
 private slots:
     void on_btn_acte_naissance_clicked();
 
@@ -31,9 +35,15 @@ private slots:
     void on_btn_modifier_dossier_clicked();
 
 
+    void on_btn_valider_clicked();
+
+    void on_btn_annuler_clicked();
+
 private:
     Ui::MonDossierFrame *ui;
     Candidat user;
+    QString nom_acte_naissance, nom_cv, nom_diplome, nom_photo,photo,acte_naissance,cv,diplome, extention_diplome , extention_acte, extention_cv, extention_photo;
+    int update_or_save;
 };
 
 #endif // MONDOSSIERFRAME_H

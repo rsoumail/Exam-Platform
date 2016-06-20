@@ -19,7 +19,8 @@ class AdministrateurManager
     int countByPseudo(QString);
     Administrateur uniqueByPseudoAndPassword(QString, QString);
     Administrateur unique(int);
-    list<Administrateur> all();
+    QList<Administrateur> all();
+    QSqlTableModel* model(QSqlTableModel*);
 
 
 };

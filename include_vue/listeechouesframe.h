@@ -2,7 +2,7 @@
 #define LISTEECHOUESFRAME_H
 
 #include <QFrame>
-#include "monresultatframe.h"
+#include "candidature_manager.h"
 namespace Ui {
 class ListeEchouesFrame;
 }
@@ -14,6 +14,9 @@ class ListeEchouesFrame : public QFrame
 public:
     explicit ListeEchouesFrame(QWidget *parent = 0);
     ~ListeEchouesFrame();
+
+private slots:
+    void on_click_impression();
 
 private:
     Ui::ListeEchouesFrame *ui;

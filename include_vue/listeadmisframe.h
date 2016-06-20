@@ -15,6 +15,9 @@ public:
     explicit LIsteAdmisFrame(QWidget *parent = 0);
     ~LIsteAdmisFrame();
 
+private slots:
+    void on_click_impression();
+
 private:
     Ui::LIsteAdmisFrame *ui;
 };

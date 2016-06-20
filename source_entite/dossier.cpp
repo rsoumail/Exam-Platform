@@ -65,10 +65,36 @@ Candidature Dossier::candidature() const
     return candidature_;
 }
 
+QString Dossier::acte_naissance() const
+{
+    return acte_naissance_;
+}
+
+void Dossier::setActe_naissance(const QString &acte_naissance)
+{
+    acte_naissance_ = acte_naissance;
+}
+
+int Dossier::a_traiter() const
+{
+    return a_traiter_;
+}
+
+void Dossier::setA_traiter(int a_traiter)
+{
+    a_traiter_ = a_traiter;
+}
+
 Dossier::Dossier()
 {
     
-    
+    statut_ = 100;
+    id_ = 0;
+    acte_naissance_ = "";
+    cv_ = "";
+    diplome_ = "";
+    photo_ = "";
+
     
 }
 
@@ -76,7 +102,8 @@ Dossier::Dossier(Candidature& candidature)
 {
     
     this->candidature_ = candidature;
-    
+    this->statut_ = 0;
+    this->a_traiter_ = 1;
 }
 
 Dossier::Dossier(const Dossier& d)
@@ -88,7 +115,8 @@ Dossier::Dossier(const Dossier& d)
     this->diplome_ = d.diplome_;
     this->statut_ = d.statut_;
     this->candidature_ = d.candidature_;
-
+    this->acte_naissance_ = d.acte_naissance_;
+    this->a_traiter_ = d.a_traiter_;
 }
 
 Dossier& Dossier::operator=(const Dossier& d)
@@ -100,6 +128,8 @@ Dossier& Dossier::operator=(const Dossier& d)
     this->diplome_ = d.diplome_;
     this->statut_ = d.statut_;
     this->candidature_ = d.candidature_;
+    this->acte_naissance_ = d.acte_naissance_;
+    this->a_traiter_ = d.a_traiter_;
     return *this;
 
 }

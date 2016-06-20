@@ -7,7 +7,9 @@ private:
     QString cv_;
     QString photo_;
     QString diplome_;
+    QString acte_naissance_;
     int statut_;
+    int a_traiter_;
     Candidature candidature_;
 
 public:
@@ -31,4 +33,8 @@ public:
     QString diplome() const;
     int statut() const;
     Candidature candidature() const;
+    QString acte_naissance() const;
+    void setActe_naissance(const QString &acte_naissance);
+    int a_traiter() const;
+    void setA_traiter(int a_traiter);
 };

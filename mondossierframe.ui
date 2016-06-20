@@ -29,7 +29,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>GroupBox</string>
+    <string/>
    </property>
    <widget class="QPushButton" name="btn_valider">
     <property name="geometry">
@@ -70,28 +70,6 @@
         <string>Parcourir</string>
        </property>
       </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>40</y>
-      <width>461</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_15">
-     <item>
-      <widget class="QLabel" name="label_14">
-       <property name="text">
-        <string>Nom : </string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="nom_candidat_3"/>
      </item>
     </layout>
    </widget>
@@ -166,28 +144,6 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="layoutWidget_5">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>90</y>
-      <width>461</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_18">
-     <item>
-      <widget class="QLabel" name="label_17">
-       <property name="text">
-        <string>Prénom : </string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="prenom_candidat"/>
-     </item>
-    </layout>
-   </widget>
    <widget class="QWidget" name="layoutWidget_6">
     <property name="geometry">
      <rect>
@@ -236,12 +192,12 @@
     <rect>
      <x>610</x>
      <y>60</y>
-     <width>67</width>
+     <width>281</width>
      <height>17</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="btn_modifier_dossier">

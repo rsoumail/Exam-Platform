@@ -2,7 +2,7 @@
 #define HTTPDOWNLOADER_H
 
 #include <QObject>
-#include <  >
+
 #include <QHttpMultiPart>
 #include <qhttpmultipart.h>
 #include <QFile>
@@ -18,8 +18,8 @@ public:
 signals:
 
 public slots:
-    void stateChanged (int state);
-    void responseHeaderReceived (const QHttpResponseHeader& resp);
+    //void stateChanged (int state);
+    //void responseHeaderReceived (const QHttpResponseHeader& resp);
 };
 
 #endif // HTTPDOWNLOADER_H

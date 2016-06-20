@@ -1,6 +1,7 @@
 #include<QtSql>
 #include "fonctions.h"
 #include "candidature_manager.h"
+#include <QtCore>
 
 
 ConcoursManager::ConcoursManager()
@@ -32,6 +33,7 @@ int ConcoursManager::save(const Concours& c)
       else
       {
         db.close();
+        qDebug() << db.lastError() <<" " <<c.annee() << " " <<c.age_limite() << " " << c.date_limite() << " " << c.date_resultats()<< " " << c.statut();
         return -1;
       }
   }
@@ -105,7 +107,7 @@ Concours ConcoursManager::unique(int id)
   Concours tmp;
   if(db.open())
   {
-      QString sQuery = "SELECT * FROM  WHERE id_concour=:id";
+      QString sQuery = "SELECT * FROM  concours WHERE id_concour=:id";
       QSqlQuery query ;
       query.prepare(sQuery);
       query.bindValue(":id", id);
@@ -119,15 +121,11 @@ Concours ConcoursManager::unique(int id)
             tmp.setDate_limite(query.value(3).toString());
             tmp.setDate_resultats(query.value(4).toString());
             tmp.setStatut(query.value(5).toInt());
-            db.close();
-            return tmp;
+
         }
       }
-      else
-      {
-        db.close();
-        return tmp;
-      }
+      db.close();
+      return tmp;
   }
   else
   {
@@ -135,11 +133,11 @@ Concours ConcoursManager::unique(int id)
   }
 }
 
-list<Concours> ConcoursManager::all()
+QList<Concours> ConcoursManager::all()
 {
 
-  list<Concours> concours;
-  QString sQuery = "SELECT * FROM concours ";
+  QList<Concours> concours;
+  QString sQuery = "SELECT * FROM concours ORDER BY annee_concour DESC";
   if(db.open())
   {
       QSqlQuery query ;
@@ -166,3 +164,69 @@ list<Concours> ConcoursManager::all()
 
 }
 
+QSqlTableModel* ConcoursManager::model(QSqlTableModel*model_)
+{
+    db.open();
+    model_->setTable("concours");
+    model_->select();
+    db.close();
+    return model_;
+}
+
+Concours ConcoursManager::actif()
+{
+    Concours tmp;
+    if(db.open())
+    {
+        QString sQuery = "SELECT * FROM concours  WHERE statut_concour=:statut";
+        QSqlQuery query ;
+        query.prepare(sQuery);
+        query.bindValue(":statut", 1);
+        if(query.exec())
+        {
+          if(query.next())
+          {
+              tmp.setId(query.value(0).toInt());
+              tmp.setAnnee(query.value(1).toString());
+              tmp.setAge_limite(query.value(2).toInt());
+              tmp.setDate_limite(query.value(3).toString());
+              tmp.setDate_resultats(query.value(4).toString());
+              tmp.setStatut(query.value(5).toInt());
+          }
+        }
+        db.close();
+        return tmp;
+    }
+    else
+    {
+        return tmp;
+    }
+}
+
+int ConcoursManager::all_old_to_inactif()
+{
+    QString sQuery = "UPDATE concours SET statut_concour=:statut";
+    if(db.open())
+    {
+        QSqlQuery query ;
+        query.prepare(sQuery);
+        query.bindValue(":statut", 0);
+        if(query.exec())
+        {
+          if(query.next())
+          {
+              db.close();
+              return 1;
+          }
+        }
+        else
+        {
+          db.close();
+          return -1;
+        }
+    }
+    else
+    {
+        return -1;
+    }
+}
