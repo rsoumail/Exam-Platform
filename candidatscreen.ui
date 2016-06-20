@@ -60,9 +60,17 @@
      <string>Deconnexion</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuProfil">
+    <property name="title">
+     <string>Profil</string>
+    </property>
+    <addaction name="actionVoir"/>
+    <addaction name="actionModifier"/>
+   </widget>
    <addaction name="menuMon_Dossier"/>
    <addaction name="menuCandidature"/>
    <addaction name="menuResultat"/>
+   <addaction name="menuProfil"/>
    <addaction name="menuDeconnexion"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -78,7 +86,7 @@
   </action>
   <action name="actionVoir_les_rejets">
    <property name="text">
-    <string>Voir les rejets</string>
+    <string>Voir les récalés</string>
    </property>
   </action>
   <action name="actionCandidats_Authoris_s">
@@ -89,6 +97,16 @@
   <action name="actionDossiers_Rej_t_s">
    <property name="text">
     <string>Dossiers Rejétés</string>
+   </property>
+  </action>
+  <action name="actionVoir">
+   <property name="text">
+    <string>Voir</string>
+   </property>
+  </action>
+  <action name="actionModifier">
+   <property name="text">
+    <string>Modifier</string>
    </property>
   </action>
  </widget>
